@@ -23,9 +23,9 @@ describe("StatisticsTest",function(){
         // NAN (not-a-number)
         // Design the expect statement here.
         // Use https://www.w3schools.com/jsref/jsref_isnan.asp
-        expect(isNaN(stats.min)).tobe(true);
-        expect(isNaN(stats.max)).tobe(true);
-        expect(isNaN(stats.average)).tobe(true);
+        expect(isNaN(stats.min)).toBe(true);
+        expect(isNaN(stats.max)).toBe(true);
+        expect(isNaN(stats.average)).toBe(true);
     })
     
     it("raises alerts when max is greater than threshold",function(){

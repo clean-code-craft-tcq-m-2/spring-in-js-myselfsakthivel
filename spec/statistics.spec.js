@@ -15,7 +15,6 @@ describe("StatisticsTest",function(){
         expect(Math.abs((stats.max- 8.9))).toBeLessThan(epsilon);
         expect(Math.abs((stats.average- 4.525))).toBeLessThan(epsilon);
     })
-
     
     it("reportsNaNForEmptyInput",function(){
         const numbers=[];
@@ -24,8 +23,11 @@ describe("StatisticsTest",function(){
         // NAN (not-a-number)
         // Design the expect statement here.
         // Use https://www.w3schools.com/jsref/jsref_isnan.asp
-        
+        expect(isNaN(stats.min)).tobe(true);
+        expect(isNaN(stats.max)).tobe(true);
+        expect(isNaN(stats.average)).tobe(true);
     })
+    
     it("raises alerts when max is greater than threshold",function(){
          function EmailAlert(emailSent) {
             this.emailSent = emailSent;

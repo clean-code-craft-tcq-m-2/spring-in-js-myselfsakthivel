@@ -44,10 +44,18 @@ describe("StatisticsTest",function(){
          
          function StatsAlerter(maxThreshold, alerters) {
              this.maxThreshold = maxThreshold;
-             this.alerters = alerters;
-             this.checkAndAlert = function(max) {
+             this.emailAlert = alerters[0];
+             this.ledAlert = alerters[1];
+             this.checkAndAlert = function(maxArray) {
+                 var max = Math.max(...maxArray);
+                 
+                 if (max > this.maxThreshold) {
+                     this.emailAlert.emailSent = true;
+                     this.ledAlert.ledGlows = true;
+                 }
+                 
                  console.log("sakthiTestLogAlertMax", max);
-                 console.log("sakthiTestLogAlertAlerters", this.alerters);
+                 console.log("sakthiTestLogAlertAlerters", this);
              };
          }
         
@@ -60,10 +68,7 @@ describe("StatisticsTest",function(){
          const statsAlerter=new StatsAlerter(maxThreshold, alerters);
          statsAlerter.checkAndAlert([99.8, 34.2, 4.5, 6.7]);
      
-         expect(emailAlert.emailSent).tobe(true);
-         expect(ledAlert.ledGlows).tobe(true);
-
-        
-        
+         expect(statsAlerter.emailAlert.emailSent).toBe(true);
+         expect(statsAlerter.ledAlert.ledGlows).toBe(true);
     }) 
 })

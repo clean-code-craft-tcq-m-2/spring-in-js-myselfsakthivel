@@ -9,8 +9,6 @@ describe("StatisticsTest",function(){
         const stats=getStatistics(numbers);
         const epsilon=0.001;
         
-        console.log("sakthiTestLog", stats);
-
         expect(Math.abs((stats.min-1.5))).toBeLessThan(epsilon);
         expect(Math.abs((stats.max- 8.9))).toBeLessThan(epsilon);
         expect(Math.abs((stats.average- 4.525))).toBeLessThan(epsilon);
@@ -23,10 +21,6 @@ describe("StatisticsTest",function(){
         // NAN (not-a-number)
         // Design the expect statement here.
         // Use https://www.w3schools.com/jsref/jsref_isnan.asp
-        
-        console.log("sakthiTestLogNAN", isNaN(stats.min));
-        console.log("sakthiTestLogNAN", isNaN(stats.max));
-        console.log("sakthiTestLogNAN", isNaN(stats.average));
         
         expect(isNaN(stats.min)).toBe(false);
         expect(isNaN(stats.max)).toBe(false);
@@ -53,9 +47,6 @@ describe("StatisticsTest",function(){
                      this.emailAlert.emailSent = true;
                      this.ledAlert.ledGlows = true;
                  }
-                 
-                 console.log("sakthiTestLogAlertMax", max);
-                 console.log("sakthiTestLogAlertAlerters", this);
              };
          }
         

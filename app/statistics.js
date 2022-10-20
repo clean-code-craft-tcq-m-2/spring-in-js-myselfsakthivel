@@ -8,7 +8,6 @@ module.exports = function getStatistics(numbers) {
     sum = numbers.reduce((partSum, a) => partSum + a, 0);
     computedStats.average = sum/numbers.length;
 
-    console.log("sakthiLogicLog", computedStats);
     return computedStats;
 }
 

@@ -23,6 +23,9 @@ describe("StatisticsTest",function(){
         // NAN (not-a-number)
         // Design the expect statement here.
         // Use https://www.w3schools.com/jsref/jsref_isnan.asp
+        console.log("sakthiTestLogNAN", isNaN(stats.min));
+        console.log("sakthiTestLogNAN", isNaN(stats.max));
+        console.log("sakthiTestLogNAN", isNaN(stats.average));
         expect(isNaN(stats.min)).toBe(true);
         expect(isNaN(stats.max)).toBe(true);
         expect(isNaN(stats.average)).toBe(true);

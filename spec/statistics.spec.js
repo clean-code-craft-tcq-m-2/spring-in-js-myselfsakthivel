@@ -8,12 +8,13 @@ describe("StatisticsTest",function(){
         const numbers=[r1,r2,r3,r4];
         const stats=getStatistics(numbers);
         const epsilon=0.001;
+        
+        console.log("sakthiTestLog", stats);
 
         expect(Math.abs((stats.min-1.5))).toBeLessThan(epsilon);
         expect(Math.abs((stats.max- 8.9))).toBeLessThan(epsilon);
         expect(Math.abs((stats.average- 4.525))).toBeLessThan(epsilon);
     })
-
     
     it("reportsNaNForEmptyInput",function(){
         const numbers=[];
@@ -23,8 +24,41 @@ describe("StatisticsTest",function(){
         // Design the expect statement here.
         // Use https://www.w3schools.com/jsref/jsref_isnan.asp
         
+        console.log("sakthiTestLogNAN", isNaN(stats.min));
+        console.log("sakthiTestLogNAN", isNaN(stats.max));
+        console.log("sakthiTestLogNAN", isNaN(stats.average));
+        
+        expect(isNaN(stats.min)).toBe(false);
+        expect(isNaN(stats.max)).toBe(false);
+        expect(isNaN(stats.average)).toBe(true);
     })
+    
     it("raises alerts when max is greater than threshold",function(){
+         function EmailAlert(emailSent) {
+            this.emailSent = emailSent;
+         }
+        
+         function LEDAlert(ledGlows) {
+            this.ledGlows = ledGlows;
+         }
+         
+         function StatsAlerter(maxThreshold, alerters) {
+             this.maxThreshold = maxThreshold;
+             this.emailAlert = alerters[0];
+             this.ledAlert = alerters[1];
+             this.checkAndAlert = function(maxArray) {
+                 var max = Math.max(...maxArray);
+                 
+                 if (max > this.maxThreshold) {
+                     this.emailAlert.emailSent = true;
+                     this.ledAlert.ledGlows = true;
+                 }
+                 
+                 console.log("sakthiTestLogAlertMax", max);
+                 console.log("sakthiTestLogAlertAlerters", this);
+             };
+         }
+        
          const emailAlert=new EmailAlert();
          const ledAlert=new LEDAlert();
          const alerters=[emailAlert,ledAlert];
@@ -34,10 +68,7 @@ describe("StatisticsTest",function(){
          const statsAlerter=new StatsAlerter(maxThreshold, alerters);
          statsAlerter.checkAndAlert([99.8, 34.2, 4.5, 6.7]);
      
-         expect(emailAlert.emailSent).tobe(true);
-         expect(ledAlert.ledGlows).tobe(true);
-
-        
-        
+         expect(statsAlerter.emailAlert.emailSent).toBe(true);
+         expect(statsAlerter.ledAlert.ledGlows).toBe(true);
     }) 
 })

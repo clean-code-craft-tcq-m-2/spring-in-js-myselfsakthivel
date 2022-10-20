@@ -27,10 +27,13 @@ describe("StatisticsTest",function(){
         
     })
     it("raises alerts when max is greater than threshold",function(){
-         const EmailAlert = new Object();
-         const LEDAlert = new Object();
-         EmailAlert.emailSent = false;
-         LEDAlert.ledGlows = false;
+         function EmailAlert(emailSent) {
+            this.emailSent = emailSent;
+         }
+        
+         function LEDAlert(ledGlows) {
+            this.ledGlows = ledGlows;
+         }
          
          const emailAlert=new EmailAlert();
          const ledAlert=new LEDAlert();

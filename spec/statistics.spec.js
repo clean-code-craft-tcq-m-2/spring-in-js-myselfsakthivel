@@ -8,6 +8,8 @@ describe("StatisticsTest",function(){
         const numbers=[r1,r2,r3,r4];
         const stats=getStatistics(numbers);
         const epsilon=0.001;
+        
+        console.log("sakthiTestLog", stats);
 
         expect(Math.abs((stats.min-1.5))).toBeLessThan(epsilon);
         expect(Math.abs((stats.max- 8.9))).toBeLessThan(epsilon);

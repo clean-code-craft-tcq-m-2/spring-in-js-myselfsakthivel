@@ -42,6 +42,15 @@ describe("StatisticsTest",function(){
             this.ledGlows = ledGlows;
          }
          
+         function StatsAlerter(maxThreshold, alerters) {
+             this.maxThreshold = maxThreshold;
+             this.alerters = alerters;
+             this.checkAndAlert = function(max) {
+                 console.log("sakthiTestLogAlertMax", max);
+                 console.log("sakthiTestLogAlertAlerters", this.alerters);
+             };
+         }
+        
          const emailAlert=new EmailAlert();
          const ledAlert=new LEDAlert();
          const alerters=[emailAlert,ledAlert];
